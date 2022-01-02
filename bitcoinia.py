@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for
 from werkzeug.utils import redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
-
+import os
 
 
 app = Flask(__name__)
@@ -16,6 +16,7 @@ value2 = "datx4i"
 
 ENV = 'dev'
 
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 if ENV == 'dev':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d'
