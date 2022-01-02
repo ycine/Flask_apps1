@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/static/flask.css'>
+
+    <title>Bitcoinia</title>
+</head>
+<body id="bg2">
+    <div id="container1" style="background-image: url('/static/cool-background.png');">
+        <div id="container2">
+          
+          <h2 id="col1text">Hashe</h2>
+          <h2 id="col2text">Dodaj</h2>
+          <div id="cent"></div>
+             <div id="col1">
+              <p><small>{{h1}}</small></p>
+              <table>
+                <tr>
+                  <td><b>Index</b></td>
+                  <td><b>Dane</b></td>
+                  <td><b>Czas</b></td>
+                  <td><b>Wcześniejszy chain </b></td>
+                  <td><b>Hash</b></td>
+                  <td><b>Ilość</b></td>
+                </tr>
+                
+
+                  {% for i in get1 %} 
+
+                <tr>
+                     <td> {{i.index}}</td>
+                     <td> {{i.data}}</td>
+                     <td> {{i.timestamp}}</td>
+                     <td> <small>{{i.previoushash}}</small></td>
+                     <td> <small>{{i.hash}}</small></td>
+                     <td> {{i.ilosc}}</td>
+
+                      {% endfor %}
+                  
+                  
+                </tr>
+              </table> 
+             </div>
+             <div id="col2">
+               <form action="/submit" method="POST">
+                    <b><label for="fname">Ilość</label><br></b>
+                    <p>{% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                          <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}</p>
+                    <input type="number"  name="ilosc" value="wprowadź ilość"><br>
+                    <input type="hidden" name="index" value="{{ index }}"/>
+                    <input type="hidden" name="data" value="{{ data }}"/>
+                    <input type="hidden" name="previoushash" value="{{ previoushash }}"/>
+                    <input type="hidden" name="hash" value="{{ hash }}"/>
+                    
+                    
+                    
+                    <input type="submit" value="Zakup">
+                  </form>
+             </div>
+        </div>
+        
+      </div>
+</body>
+</html>
