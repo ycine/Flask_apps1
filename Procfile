@@ -1,1 +1,1 @@
-web: gunicorn app:bitcoinia
+web: gunicorn bitcoinia:app
