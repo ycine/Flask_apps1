@@ -64,27 +64,27 @@ def hello(name=None):
     get1 = Bitcoinia.query.order_by(Bitcoinia.index.desc()).first()
 
 
-    try:
-        get1_hash = get1.hash
-        ten = get1_hash[0:10]
-        nexthash = ten + hash_1
-    
-
-        get1_index = get1.index
-        index2 = int(get1_index)
-        index3 = index2 + 1
+    # try:
+    get1_hash = get1.hash
+    ten = get1_hash[0:10]
+    nexthash = ten + hash_1
 
 
-        get1_data = get1.data
-        data1 = get1_data
+    get1_index = get1.index
+    index2 = int(get1_index)
+    index3 = index2 + 1
 
-        data2  = re.findall('\d+', data1)
-        data4 = 'block'+ str(int(data2[0])+1) + 'chain'
-    except AttributeError:
-        data4 ='0'
-        index3 = '0'
-        nexthash = '0'
-        get1_hash='0'
+
+    get1_data = get1.data
+    data1 = get1_data
+
+    data2  = re.findall('\d+', data1)
+    data4 = 'block'+ str(int(data2[0])+1) + 'chain'
+    # except AttributeError:
+    #     data4 ='0'
+    #     index3 = '0'
+    #     nexthash = '0'
+    #     get1_hash='0'
 
         
 
