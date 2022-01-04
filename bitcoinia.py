@@ -108,7 +108,7 @@ def hello(name=None):
     get1=get_bitcoinia()
 
 
-    return render_template('bitcoinia1.html', name=name, get1=get1, get11=get11, index=index3, data=data4, hash=nexthash, previoushash=get1_hash  )
+    return render_template('bitcoinia1.html', index=index3, data=data4, hash=nexthash, previoushash=get1_hash  )
 
 
 
