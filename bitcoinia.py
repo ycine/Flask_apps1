@@ -14,17 +14,11 @@ value2 = "datx4i"
 
 
 
-ENV = 'dev'
+
 
 uri = os.getenv("postgres://postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d")
-if ENV == 'dev':
-    app.debug = True
-    app.config['DATABASE_URL'] = 'postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d'
-else:
-    app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d'
 
 db = SQLAlchemy(app)
 
