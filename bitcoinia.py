@@ -25,7 +25,7 @@ db = SQLAlchemy(app)
 
 
 
-class Bitcoinia(db.Model):
+class d5dejr1usnvp2n(db.Model):
     __tablename__ = 'bitcoinia'
     index = db.Column(db.Numeric, primary_key=True)
     timestamp = db.Column(db.DateTime(), server_default=func.now())
@@ -61,7 +61,7 @@ def hello(name=None):
 
 
 
-    get1 = Bitcoinia.query.order_by(Bitcoinia.index.desc()).first()
+    get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.index.desc()).first()
 
 
     # try:
@@ -94,13 +94,13 @@ def hello(name=None):
 
 
     def get_hash():
-        get1 = Bitcoinia.query.order_by(Bitcoinia.hash.desc()).first()
+        get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.hash.desc()).first()
         get1_hash = get1.hash
         return get1_hash
 
 
     def get_bitcoinia():
-        get1 = Bitcoinia.query.order_by(Bitcoinia.timestamp)
+        get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.timestamp)
         return get1
 
 
@@ -136,7 +136,7 @@ def submit():
             flash('Nie wypełniono pola')
             return redirect(url_for('hello', error_statement=error_statement))
         else:
-            datta = Bitcoinia(index,data, hash, previoushash, ilosc)
+            datta = d5dejr1usnvp2n(index,data, hash, previoushash, ilosc)
             db.session.add(datta)
             db.session.commit()
 
