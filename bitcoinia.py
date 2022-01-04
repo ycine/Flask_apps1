@@ -15,11 +15,11 @@ value2 = "datx4i"
 
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://esoutvnswrotay:7fdf39aa8481eaaac8f6513de09366f048bddb1504a4f2f696ac8392125bc436@ec2-54-174-43-13.compute-1.amazonaws.com:5432/d5dejr1usnvp2n'
 
-uri = os.getenv("postgres://postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d")
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+# uri = os.getenv("postgres://postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d")
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://", 1)
 
 db = SQLAlchemy(app)
 
