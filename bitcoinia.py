@@ -103,11 +103,11 @@ def hello(name=None):
         get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.timestamp)
         return get1
 
+    get1= get_bitcoinia()
 
 
 
-
-    return render_template('bitcoinia1.html', index=index3, data=data4, hash=nexthash, previoushash=get1_hash  )
+    return render_template('bitcoinia1.html',get1=get1, index=index3, data=data4, hash=nexthash, previoushash=get1_hash  )
 
 
 
