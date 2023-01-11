@@ -23,7 +23,7 @@ html,body{
   #container1{
     /*   position:static; */
       height:100vh;
-      background-color:green;
+      
     /*   z-index:-1; */
       overflow: hidden;
       
@@ -36,7 +36,7 @@ html,body{
     
       margin-left:15vw;
       margin-right:15vw;
-      background-color:#ffb4a2;
+      background-color:#b8bcc7;
       overflow: hidden;
       border-radius: 10px;
     
@@ -54,7 +54,7 @@ html,body{
     }
    #col2text{
       width: 8vw;
-      background-color: #e5989b;
+      background-color:  #7162;
       height: 1vw;
       text-align:center;
       
@@ -62,7 +62,7 @@ html,body{
 
     #col1text{
       width: 55vw;
-      background-color: #e5989b;
+      background-color: #7162;
       height: 1vw;
       text-align:center;
       

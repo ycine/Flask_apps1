@@ -15,17 +15,19 @@ value2 = "datx4i"
 
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://esoutvnswrotay:7fdf39aa8481eaaac8f6513de09366f048bddb1504a4f2f696ac8392125bc436@ec2-54-174-43-13.compute-1.amazonaws.com:5432/d5dejr1usnvp2n'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/Bitcoinia'
 
 # uri = os.getenv("postgres://postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d")
 # if uri.startswith("postgres://"):
 #     uri = uri.replace("postgres://", "postgresql://", 1)
+db = SQLAlchemy()
+db.init_app(app)
 
-db = SQLAlchemy(app)
+# DODAWANIE OBIEKTOW PRZEZ FLASK SHELL
+# https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/queries/
 
 
-
-class d5dejr1usnvp2n(db.Model):
+class Bitcoinia(db.Model):
     __tablename__ = 'bitcoinia'
     index = db.Column(db.Numeric, primary_key=True)
     timestamp = db.Column(db.DateTime(), server_default=func.now())
@@ -61,7 +63,7 @@ def hello(name=None):
 
 
 
-    get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.index.desc()).first()
+    get1 = Bitcoinia.query.order_by(Bitcoinia.index.desc()).first()
 
 
     # try:
@@ -94,13 +96,13 @@ def hello(name=None):
 
 
     def get_hash():
-        get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.hash.desc()).first()
+        get1 = Bitcoinia.query.order_by(Bitcoinia.hash.desc()).first()
         get1_hash = get1.hash
         return get1_hash
 
 
     def get_bitcoinia():
-        get1 = d5dejr1usnvp2n.query.order_by(d5dejr1usnvp2n.timestamp)
+        get1 = Bitcoinia.query.order_by(Bitcoinia.timestamp)
         return get1
 
     get1= get_bitcoinia()
@@ -136,7 +138,7 @@ def submit():
             flash('Nie wypełniono pola')
             return redirect(url_for('hello', error_statement=error_statement))
         else:
-            datta = d5dejr1usnvp2n(index,data, hash, previoushash, ilosc)
+            datta = Bitcoinia(index,data, hash, previoushash, ilosc)
             db.session.add(datta)
             db.session.commit()
 
