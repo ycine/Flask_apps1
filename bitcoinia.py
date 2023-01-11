@@ -14,8 +14,10 @@ value2 = "datx4i"
 
 
 
+# TUTAJ POLACZENIE Z BAZA POSTGRESOWA
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/Bitcoinia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mysql:mysql@localhost:3306/bitcoinia'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/Bitcoinia'
 
 # uri = os.getenv("postgres://postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d")
 # if uri.startswith("postgres://"):
@@ -29,7 +31,8 @@ db.init_app(app)
 
 class Bitcoinia(db.Model):
     __tablename__ = 'bitcoinia'
-    index = db.Column(db.Numeric, primary_key=True)
+    # TUTAJ PONIZEJ DLA MYSQL TYP POLA Z NUMERIC ZOSTAL ZMIENIONY NA INTEGER
+    index = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime(), server_default=func.now())
     data = db.Column(db.String(30))
     hash = db.Column(db.String(64), unique=True)
@@ -62,7 +65,6 @@ def hello(name=None):
     hash_1 = ''.join(random.choices(all_chars, k=54))
 
 
-
     get1 = Bitcoinia.query.order_by(Bitcoinia.index.desc()).first()
 
 
@@ -81,6 +83,7 @@ def hello(name=None):
     data1 = get1_data
 
     data2  = re.findall('\d+', data1)
+    print(data2)
     data4 = 'block'+ str(int(data2[0])+1) + 'chain'
     # except AttributeError:
     #     data4 ='0'
