@@ -16,7 +16,11 @@ value2 = "datx4i"
 
 # TUTAJ POLACZENIE Z BAZA POSTGRESOWA
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/Bitcoinia'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mysql:mysql@localhost:3306/bitcoinia'
+# TO JEST STANDARDOWE POLACZENIE Z MYSQL Z LOKALNEGO KOMPUTERA
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mysql:mysql@localhost:3306/bitcoinia'
+
+# POLACZENIE Z PYTHONANYWHERE
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mcinek91@mcinek91.mysql.pythonanywhere-services.com/bitcoinia'
 
 
 # uri = os.getenv("postgres://postgres://ccfszdwsuuxfzu:434734dd0dcef146d2b7162ea46d9bb53047d74e84b9c5f093cd5763bcc36f61@ec2-174-129-37-144.compute-1.amazonaws.com:5432/d72hfkp6vau80d")
@@ -50,12 +54,12 @@ class Bitcoinia(db.Model):
 
 
 
-@app.route("/")
+@app.route("/1")
 def hello_world():
     return "Welcome at bItcoInIa !"
 
 
-@app.route('/1')
+@app.route('/')
 def hello(name=None):
 
     import re
